@@ -1,0 +1,20 @@
+﻿program = statementlist <<eof>> ;
+
+FIRST(program) = { '<', '>', '+', '-', '[', ε }
+FOLLOW(program) = {}
+
+statementlist = statement statementlist | ε ;
+
+statement
+    =   '<' 
+    |   '>'
+    |   '+'
+    |   '-'
+    |   '.'
+    |   ','
+    |   loop
+    ;
+
+loop
+    = '[' , statementlist , ']'
+    ;
